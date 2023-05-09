@@ -1,6 +1,6 @@
 var path,boy,cash,diamonds,jewelry,sword;
 var pathImg,boyImg,cashImg,diamondsImg,jewelryImg,swordImg;
-var treasureCollection = 0;
+var pontos = 0;
 var cashG,diamondsG,jewelryG,swordGroup;
 
 //Estados do Jogo
@@ -19,45 +19,45 @@ function preload(){
 }
 
 function setup(){
-  
-  createCanvas(400,600);
-// Movendo fundo
-path=createSprite(200,200);
-path.addImage(pathImg);
-path.velocityY = 4;
+
+   createCanvas(400,600);
+  // criando fundo..
+  path=createSprite(200,200);
+  path.addImage(pathImg);
+  path.velocityY = 4;
 
 
-//criando menino correndo
-boy = createSprite(70,580,20,20);
-boy.addAnimation("SahilRunning",boyImg);
-boy.scale=0.08;
-  
-  
-cashG=new Group();
-diamondsG=new Group();
-jewelryG=new Group();
-swordGroup=new Group();
+  //criando menino correndo
+  boy = createSprite(70,580,20,20);
+  boy.addAnimation("SahilRunning",boyImg);
+  boy.scale=0.08;
+
+  //criando os grupos..
+  cashG=new Group();
+  diamondsG=new Group();
+  jewelryG=new Group();
+  swordGroup=new Group();
 
 }
 
 function draw() {
 
   if(gameState===PLAY){
-  background(0);
-  boy.x = World.mouseX;
-  
-  edges= createEdgeSprites();
-  boy.collide(edges);
-  
-  //código para reiniciar o fundo
-  if(path.y > 400 ){
-    path.y = height/2;
-  }
-  
-    createCash();
-    createDiamonds();
-    createjewelry();
-    createSword();
+    background(0);
+    boy.x = World.mouseX;
+
+    edges= createEdgeSprites();
+    boy.collide(edges);
+
+    //código para reiniciar o fundo
+    if(path.y > 400 ){
+      path.y = height/2;
+    }
+
+     createCash();
+     createDiamonds();
+     createjewelry();
+     createSword();
 
   
   }
@@ -65,7 +65,7 @@ function draw() {
   drawSprites();
   textSize(20);
   fill(255);
-  text("Tesouro: "+ treasureCollection,10,30);
+  text("Tesouro: "+ pontos,10,30);
   
 
 }
@@ -76,7 +76,7 @@ function createCash() {
   cash.addImage(cashImg);
   cash.scale=0.12;
   cash.velocityY = 3;
-  cash.lifetime = 150;
+  cash.lifetime = 250;
   cashG.add(cash);
   }
 }
@@ -87,7 +87,7 @@ function createDiamonds() {
   diamonds.addImage(diamondsImg);
   diamonds.scale=0.03;
   diamonds.velocityY = 3;
-  diamonds.lifetime = 150;
+  diamonds.lifetime = 250;
   diamondsG.add(diamonds);
 }
 }
@@ -98,7 +98,7 @@ function createjewelry() {
   jewelry.addImage(jewelryImg);
   jewelry.scale=0.13;
   jewelry.velocityY = 3;
-  jewelry.lifetime = 150;
+  jewelry.lifetime = 250;
   jewelryG.add(jewelry);
   }
 }
@@ -109,7 +109,7 @@ function createSword(){
   sword.addImage(swordImg);
   sword.scale=0.1;
   sword.velocityY = 3;
-  sword.lifetime = 150;
+  sword.lifetime = 250;
   swordGroup.add(sword);
   }
 }
